@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="pl"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NAZWA FIRMY | Agencja Marketingowa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Manrope:wght@400;500;600&amp;family=Caveat:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#0c006a",
+                    "on-primary-fixed": "#001b3f",
+                    "on-tertiary-container": "#fcfbfb",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "secondary-container": "#2e0aff",
+                    "on-surface": "#1a1c1d",
+                    "inverse-primary": "#abc7ff",
+                    "on-primary-fixed-variant": "#00458f",
+                    "primary-container": "#0071e3",
+                    "outline": "#717785",
+                    "surface-variant": "#e2e2e4",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#e2dfff",
+                    "primary-fixed-dim": "#abc7ff",
+                    "tertiary-container": "#737474",
+                    "tertiary-fixed": "#e3e2e2",
+                    "on-error": "#ffffff",
+                    "surface": "#f9f9fb",
+                    "on-secondary-fixed-variant": "#2700e8",
+                    "on-secondary-container": "#bdbcff",
+                    "background": "#f9f9fb",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#0059b5",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f9f9fb",
+                    "inverse-surface": "#2f3132",
+                    "surface-dim": "#d9dadc",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f3f3f5",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#c2c1ff",
+                    "surface-tint": "#005cbb",
+                    "surface-container": "#eeeef0",
+                    "inverse-on-surface": "#f0f0f2",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "on-primary-container": "#fcfbff",
+                    "tertiary": "#5b5b5c",
+                    "primary-fixed": "#d7e2ff",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#414753",
+                    "surface-container-high": "#e8e8ea",
+                    "on-background": "#1a1c1d",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#1e00c0",
+                    "surface-container-highest": "#e2e2e4",
+                    "outline-variant": "#c1c6d6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Manrope"],
+                    "accent": ["Caveat"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #f9f9fb; color: #1a1c1d; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .caveat { font-family: 'Caveat', cursive; }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-fixed selection:text-on-primary-fixed-variant">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-white/10 dark:border-slate-800/50 shadow-sm transition-all ease-in-out">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-slate-900 dark:text-white uppercase">NAZWA FIRMY</div>
+<div class="hidden md:flex gap-8 items-center font-['Inter'] font-medium text-sm tracking-tight">
+<a class="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-500 transition-colors duration-300" href="#">O nas</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors duration-300" href="#oferta">Oferta</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors duration-300" href="#proces">Proces</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors duration-300" href="#portfolio">Portfolio</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors duration-300" href="#zespol">Zespół</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors duration-300" href="#kontakt">Kontakt</a>
+</div>
+<button class="bg-primary hover:bg-primary-container text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md shadow-primary/20">
+                Darmowa wycena
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative pt-32 pb-20 md:pt-52 md:pb-32 px-6 overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low text-primary text-sm font-semibold mb-8 animate-fade-in">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+                Agencja interaktywna nowej generacji
+            </div>
+<h1 class="text-5xl md:text-8xl font-black tracking-tight leading-[1.1] mb-8 text-on-surface">
+                Zaistniej w internecie<br/>
+<span class="caveat text-primary inline-block rotate-[-3deg] transform">skutecznie</span>
+</h1>
+<p class="max-w-2xl text-lg md:text-xl text-on-surface-variant leading-relaxed mb-12">
+                Pomagamy firmom budować silną obecność online poprzez nowoczesne strony internetowe, skuteczne SEO oraz profesjonalne zarządzanie social mediami.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-lg shadow-primary/25" href="#oferta">Sprawdź ofertę</a>
+<a class="px-8 py-4 bg-surface-container-lowest text-primary rounded-full font-bold text-lg hover:bg-surface-container-low transition-colors" href="#kontakt">Skontaktuj się</a>
+</div>
+</div>
+<!-- Background Elements -->
+<div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-72 h-72 bg-secondary-container/5 blur-[100px] rounded-full"></div>
+</header>
+<!-- Services Section -->
+<section class="py-24 px-6 bg-surface-container-low" id="oferta">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+<div>
+<h2 class="text-4xl font-black mb-4">Nasza Oferta</h2>
+<p class="text-on-surface-variant max-w-md">Dostarczamy kompleksowe rozwiązania cyfrowe, które przekładają się na realny wzrost Twojego biznesu.</p>
+</div>
+<div class="caveat text-3xl text-primary transform -rotate-2">kompleksowo &amp; nowocześnie</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Service Card 1 -->
+<div class="glass-card p-10 rounded-lg hover:translate-y-[-8px] transition-all duration-500 shadow-sm">
+<div class="w-14 h-14 bg-primary/10 text-primary flex items-center justify-center rounded-2xl mb-8">
+<span class="material-symbols-outlined text-3xl" data-icon="web">web</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">Strony Internetowe</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                        Tworzymy nowoczesne i responsywne witryny, które zachwycają designem i konwertują użytkowników w klientów.
+                    </p>
+</div>
+<!-- Service Card 2 -->
+<div class="glass-card p-10 rounded-lg hover:translate-y-[-8px] transition-all duration-500 shadow-sm">
+<div class="w-14 h-14 bg-primary/10 text-primary flex items-center justify-center rounded-2xl mb-8">
+<span class="material-symbols-outlined text-3xl" data-icon="search_insights">search_insights</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">Pozycjonowanie SEO</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                        Zadbamy o to, aby Twoja marka znalazła się na pierwszej stronie wyników wyszukiwania Google.
+                    </p>
+</div>
+<!-- Service Card 3 -->
+<div class="glass-card p-10 rounded-lg hover:translate-y-[-8px] transition-all duration-500 shadow-sm">
+<div class="w-14 h-14 bg-primary/10 text-primary flex items-center justify-center rounded-2xl mb-8">
+<span class="material-symbols-outlined text-3xl" data-icon="share">share</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">Social Media</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                        Budujemy zaangażowane społeczności i tworzymy treści, które przyciągają uwagę w zalewie informacji.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- How We Work Section -->
+<section class="py-24 px-6 bg-surface" id="proces">
+<div class="max-w-7xl mx-auto text-center mb-20">
+<span class="caveat text-4xl text-primary block mb-2">jak działamy</span>
+<h2 class="text-4xl font-black">Proces współpracy</h2>
+</div>
+<div class="max-w-6xl mx-auto relative">
+<!-- Timeline Line -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant/30 -translate-y-1/2"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
+<!-- Step 1 -->
+<div class="bg-surface p-6 relative group">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-4 border-surface shadow-xl flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="text-xl font-bold">1</span>
+</div>
+<h4 class="font-bold text-xl mb-2">Briefing</h4>
+<p class="text-on-surface-variant text-sm">Rozmawiamy o Twoich celach i potrzebach biznesowych.</p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface p-6 relative group">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-4 border-surface shadow-xl flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="text-xl font-bold">2</span>
+</div>
+<h4 class="font-bold text-xl mb-2">Strategia</h4>
+<p class="text-on-surface-variant text-sm">Opracowujemy plan działania i wybieramy najlepsze narzędzia.</p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface p-6 relative group">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-4 border-surface shadow-xl flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="text-xl font-bold">3</span>
+</div>
+<h4 class="font-bold text-xl mb-2">Realizacja</h4>
+<p class="text-on-surface-variant text-sm">Wdrażamy projekt, dbając o każdy najmniejszy detal.</p>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface p-6 relative group">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-4 border-surface shadow-xl flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="text-xl font-bold">4</span>
+</div>
+<h4 class="font-bold text-xl mb-2">Wsparcie</h4>
+<p class="text-on-surface-variant text-sm">Monitorujemy efekty i optymalizujemy działania.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Section -->
+<section class="py-24 px-6 bg-surface-container-low" id="portfolio">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl font-black mb-16 text-center">Nasze projekty</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="group relative rounded-xl overflow-hidden aspect-[4/5]">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="modern minimalist interior design website on a macbook screen with clean typography and luxury aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN6_PzuO34WCFbBNxv2vvgQ1AZ7ictFdsTtPUcIJp9B9MLfpSoc6XK_8VKkP-RJYdEAu3xiMSeMiNEc37crHqaCQ7KTa_LfriJoc8j-PKLWOXEvr_6bjAoRvbDtxNb8N5hPyxWg4QXW72cELRfKXhPIHmZSpXIYOa3LEv_u9GlUPCXJ2lHzArjGiHRJ2GHlnESUjXQB9scYJGGlZl8T5Zsjjlnr8J_RZV_7gMXcHvrUm5BjYbNvhj9gUTe-1faTs4RsaX5ggfmFwJH"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+<span class="text-sm font-medium uppercase tracking-widest mb-2">Web Design</span>
+<h3 class="text-2xl font-bold mb-4">Luxe Interiors</h3>
+<p class="text-sm opacity-90">Nowoczesny sklep e-commerce dla marki premium.</p>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="group relative rounded-xl overflow-hidden aspect-[4/5]">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="fitness app mobile user interface on a smartphone held by a person in a gym with vibrant blue and neon accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpwuv6ib3P3AAaa79jWfQ3fAxlG4OVD24uCLgOM8rAipQMhx4qtOmxACu4QlPArQaTN7jWG-T9_dNga5YVZORY9GMoV6b0w0ZhUrOST9LBUZQybSNLLBF-zVWt4owgVzYdvJ0HWaJpZYtRIDGBu_0vas3h0q_TaakX2pzSXO7eFItAh9n6kO_LtOgIR8picXoNu7gtCm56iDgFGeRpiEc9sOhC7rO3CKdKSwD7QfWaW2LL4qNEvqdc6tIL5C6HiHqbNy8_kXNX2Wv8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+<span class="text-sm font-medium uppercase tracking-widest mb-2">Mobile App</span>
+<h3 class="text-2xl font-bold mb-4">FitFlow App</h3>
+<p class="text-sm opacity-90">Projekt interfejsu aplikacji mobilnej dla sportowców.</p>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="group relative rounded-xl overflow-hidden aspect-[4/5]">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="professional organic coffee branding and social media grid preview with warm earthy tones and high quality food photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPl1fomjjkyS-VZZtcH6XoyTjI_Or6y0OziL78Mu6N5o0QTyyFK_rmM8j6Sq_3D6ZMMr9bgfK4PUZ8ZtpHXyftyCiJTvCuUOiC2cp4n4NsXJ9Ef39P0Cm3vtKYKPH-KeA-oi5WcJB3oUhexizygx97jsQfTDGpXA-dpYvwOpDGAwZOYjhWF4ZtD6CxSc9yTBa2vn7okNYLN6lZdyPhEOLSv8qN3J_U0G-ZvE8QfEgy3d_gA_XsR5oIbMPCTQrB8sWh6KziuaPwGqA0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+<span class="text-sm font-medium uppercase tracking-widest mb-2">Social Media</span>
+<h3 class="text-2xl font-bold mb-4">Green Bean Co.</h3>
+<p class="text-sm opacity-90">Strategia i prowadzenie komunikacji w mediach społecznościowych.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-24 px-6" id="zespol">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-black">Poznaj <span class="caveat text-primary text-5xl">nasz zespół</span></h2>
+</div>
+<div class="flex flex-col md:flex-row justify-center gap-12">
+<!-- Team Member 1 -->
+<div class="flex flex-col items-center max-w-sm text-center">
+<div class="w-48 h-48 rounded-full border-4 border-primary/10 p-2 mb-6">
+<img class="w-full h-full rounded-full object-cover" data-alt="friendly creative director portrait with artistic glasses and professional clothing on a soft grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc6T2eSBONdvTAt-llVtjE2UcH4tnWPu0LXDhqxOjVNhENBfUnjDtMPOTGsjGKFMTFooLTxuixn1NcbLs_1vxRNudp49Cr954ACVeypld9LXkom81JqlUbWmvfPqZqlp3TuRl1c0rs8KvumwlZhA33kdY0m6wR_VeOeXjFSNQ0YUFJeyHMTu2-h4CwvphpyJxzOIhnlB8qN36lIQrpnaq1wtcC1jWccptC_meJ9Pw7q7tvRSJgUBH-n3cGQdP6N0LNDoCQlxJdqvSX"/>
+</div>
+<h3 class="text-2xl font-bold mb-1">Ja</h3>
+<p class="text-primary font-semibold mb-6">Creative Director &amp; Founder</p>
+<ul class="space-y-2 text-on-surface-variant italic">
+<li>— Fan minimalistycznego designu</li>
+<li>— Pije za dużo espresso</li>
+<li>— Pasjonat typografii</li>
+</ul>
+</div>
+<!-- Team Member 2 -->
+<div class="flex flex-col items-center max-w-sm text-center">
+<div class="w-48 h-48 rounded-full border-4 border-primary/10 p-2 mb-6">
+<img class="w-full h-full rounded-full object-cover" data-alt="professional smiling developer with casual attire and tech-focused workspace in soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwiKpYqX_ZZtyLlrttpCOaVN-YSfFjuh1pN389LQo7ZY3_tyx8XkMoiuPETu49GkHIlIXPsXH-VPk7D8in09U-d-eesfonr3iPBB0r7tltYxJzoCdxRrAFOz-2W2Ax85xH1x-qwujOkwB-EP6TjlEeG8xXhX16BgC4bDPbvOOBDiawL061kphEyVlxA64MBhfP0LKm398TBa3w7xo2IZcw_1vsjdiJZ9t3hFb6l6WoF8oKLzivg4RaH-l22YcmwFmCCWlmZklX58_e"/>
+</div>
+<h3 class="text-2xl font-bold mb-1">Kolega</h3>
+<p class="text-primary font-semibold mb-6">Lead Developer</p>
+<ul class="space-y-2 text-on-surface-variant italic">
+<li>— Koduje szybciej niż myśli</li>
+<li>— Miłośnik czystego kodu</li>
+<li>— Kolekcjonuje klawiatury</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 px-6 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Testimonial 1 -->
+<div class="p-10 rounded-lg bg-surface-container-low border border-outline-variant/10">
+<div class="flex text-yellow-500 mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="text-xl font-medium mb-8 italic">
+                        "Współpraca przerosła nasze oczekiwania. Nasza nowa strona nie tylko wygląda świetnie, ale realnie zwiększyła liczbę zapytań o 40%."
+                    </blockquote>
+<div class="font-bold text-on-surface">Anna Kowalska</div>
+<div class="text-on-surface-variant text-sm">CEO, TechFlow Solutions</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="p-10 rounded-lg bg-surface-container-low border border-outline-variant/10">
+<div class="flex text-yellow-500 mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="text-xl font-medium mb-8 italic">
+                        "Eksperci w każdym calu. Kampania SEO, którą przeprowadzili, pozwoliła nam wyprzedzić konkurencję w rekordowo krótkim czasie."
+                    </blockquote>
+<div class="font-bold text-on-surface">Marek Nowak</div>
+<div class="text-on-surface-variant text-sm">Manager, Green Garden Co.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Form -->
+<section class="py-24 px-6" id="kontakt">
+<div class="max-w-5xl mx-auto rounded-xl bg-gradient-to-br from-primary-fixed to-surface-container p-8 md:p-16 relative overflow-hidden shadow-2xl">
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16">
+<div>
+<h2 class="text-4xl font-black mb-6">Zacznijmy projekt</h2>
+<p class="text-on-primary-fixed-variant mb-12">Masz pytania? Chcesz otrzymać darmową wycenę? Napisz do nas, a odpowiemy w ciągu 24h.</p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<span class="font-semibold">kontakt@nazwafirmy.pl</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">call</span>
+</div>
+<span class="font-semibold">+48 123 456 789</span>
+</div>
+</div>
+</div>
+<form class="space-y-4">
+<input class="w-full bg-white/80 backdrop-blur border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-primary placeholder:text-outline" placeholder="Imię i Nazwisko" type="text"/>
+<input class="w-full bg-white/80 backdrop-blur border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-primary placeholder:text-outline" placeholder="Email" type="email"/>
+<input class="w-full bg-white/80 backdrop-blur border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-primary placeholder:text-outline" placeholder="Telefon (opcjonalnie)" type="tel"/>
+<select class="w-full bg-white/80 backdrop-blur border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-primary text-outline">
+<option value="">Czego potrzebujesz?</option>
+<option>Strona internetowa</option>
+<option>SEO</option>
+<option>Social Media</option>
+<option>Kompleksowa obsługa</option>
+</select>
+<textarea class="w-full bg-white/80 backdrop-blur border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-primary placeholder:text-outline" placeholder="Wiadomość" rows="4"></textarea>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-full shadow-lg hover:bg-primary-container transition-all">Wyślij wiadomość</button>
+</form>
+</div>
+<!-- Abstract Shapes -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-white/10 rounded-full"></div>
+<div class="absolute -bottom-12 -left-12 w-48 h-48 bg-primary/5 rounded-full"></div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-16 px-8 rounded-t-[3rem] mt-20 bg-slate-50 dark:bg-slate-950">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+<div class="md:col-span-1">
+<div class="text-2xl font-black text-slate-900 dark:text-white mb-4">NAZWA FIRMY</div>
+<p class="font-['Inter'] font-normal text-slate-500 dark:text-slate-400 caveat text-xl">Design with soul</p>
+<div class="flex gap-4 mt-8">
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined">camera</span></a>
+</div>
+</div>
+<div>
+<h5 class="font-bold mb-6">Firma</h5>
+<ul class="space-y-4 font-['Inter'] font-normal text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-blue-600 dark:hover:text-blue-400 underline decoration-2 underline-offset-4 transition-all" href="#">O nas</a></li>
+<li><a class="hover:text-blue-600 dark:hover:text-blue-400 underline decoration-2 underline-offset-4 transition-all" href="#">Kariera</a></li>
+<li><a class="hover:text-blue-600 dark:hover:text-blue-400 underline decoration-2 underline-offset-4 transition-all" href="#">Portfolio</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6">Usługi</h5>
+<ul class="space-y-4 font-['Inter'] font-normal text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-blue-600 dark:hover:text-blue-400 underline decoration-2 underline-offset-4 transition-all" href="#">Strony WWW</a></li>
+<li><a class="hover:text-blue-600 dark:hover:text-blue-400 underline decoration-2 underline-offset-4 transition-all" href="#">SEO &amp; Ads</a></li>
+<li><a class="hover:text-blue-600 dark:hover:text-blue-400 underline decoration-2 underline-offset-4 transition-all" href="#">Social Media</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6">Informacje</h5>
+<ul class="space-y-4 font-['Inter'] font-normal text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-blue-600 dark:hover:text-blue-400 underline decoration-2 underline-offset-4 transition-all" href="#">Polityka Prywatności</a></li>
+<li><a class="hover:text-blue-600 dark:hover:text-blue-400 underline decoration-2 underline-offset-4 transition-all" href="#">Regulamin</a></li>
+<li><a class="hover:text-blue-600 dark:hover:text-blue-400 underline decoration-2 underline-offset-4 transition-all" href="#">Cookies</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto pt-12 mt-12 border-t border-slate-200 dark:border-slate-800 text-center font-['Inter'] font-normal text-slate-500 dark:text-slate-400 text-sm">
+            © 2024 NAZWA FIRMY. Wszystkie prawa zastrzeżone.
+        </div>
+</footer>
+</body></html>
