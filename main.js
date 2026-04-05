@@ -48,3 +48,91 @@ if (form) {
     }
   });
 }
+
+
+// Portfolio
+const track = document.getElementById('portfolio-track');
+const marquee = document.getElementById('portfolio-marquee');
+
+if (track && marquee) {
+  // 1. Sklonuj zawartość, aby zapewnić ciągłość
+  const items = Array.from(track.children);
+  
+  // Klonujemy elementy dwa razy, aby mieć pewność, że nie braknie obrazu
+  items.forEach(item => {
+    const clone1 = item.cloneNode(true);
+    const clone2 = item.cloneNode(true);
+    track.appendChild(clone1);
+    track.appendChild(clone2);
+  });
+
+  // 2. Logika płynnego przesuwania
+  let scrollPos = 0;
+  const speed = 0.4; // Zmień tę liczbę, aby przyspieszyć/spowolnić (np. 0.5 lub 2)
+
+  function animate() {
+    scrollPos -= speed;
+    
+    // Jeśli przesunęliśmy się o szerokość jednej pełnej grupy (oryginału), 
+    // resetujemy pozycję do 0 (niezauważalnie dla oka)
+    // Wewnątrz funkcji animate w main.js:
+    const gap = 32; // 2rem = 32px
+    const firstGroupWidth = items.length * (items[0].offsetWidth + gap);
+    
+    if (Math.abs(scrollPos) >= firstGroupWidth) {
+      scrollPos = 0;
+    }
+    
+    track.style.transform = `translateX(${scrollPos}px)`;
+    requestAnimationFrame(animate);
+  }
+
+  // Uruchom animację
+  animate();
+}
+// Obsługa slidera opinii
+const testiSlider = document.getElementById('testimonials-slider');
+const dotsContainer = document.getElementById('testimonials-dots');
+const btnPrev = document.getElementById('prev-testi');
+const btnNext = document.getElementById('next-testi');
+const testimonials = document.querySelectorAll('.testimonial');
+
+if (testiSlider && dotsContainer) {
+  // 1. Generuj kropki na podstawie liczby opinii
+  testimonials.forEach((_, idx) => {
+    const dot = document.createElement('button');
+    dot.classList.add('dot');
+    if (idx === 0) dot.classList.add('dot--active');
+    dot.addEventListener('click', () => {
+      testiSlider.scrollTo({
+        left: testimonials[idx].offsetLeft - testiSlider.offsetLeft,
+        behavior: 'smooth'
+      });
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.dot');
+
+  // 2. Aktualizuj aktywną kropkę podczas scrollowania
+  testiSlider.addEventListener('scroll', () => {
+    const scrollLeft = testiSlider.scrollLeft;
+    const width = testiSlider.offsetWidth;
+    
+    // Obliczamy indeks (zaokrąglamy, żeby kropka "skoczyła" w połowie drogi)
+    const activeIndex = Math.round(scrollLeft / width);
+    
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('dot--active', idx === activeIndex);
+    });
+  });
+
+  // 3. Obsługa strzałek (zostaje podobna, ale lepiej użyć offsetu)
+  btnNext.addEventListener('click', () => {
+    testiSlider.scrollBy({ left: testiSlider.offsetWidth, behavior: 'smooth' });
+  });
+
+  btnPrev.addEventListener('click', () => {
+    testiSlider.scrollBy({ left: -testiSlider.offsetWidth, behavior: 'smooth' });
+  });
+}
