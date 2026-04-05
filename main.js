@@ -50,89 +50,65 @@ if (form) {
 }
 
 
-// Portfolio
+// ── Portfolio marquee (prawa → lewa, nieskończona pętla) ──────────────────
 const track = document.getElementById('portfolio-track');
-const marquee = document.getElementById('portfolio-marquee');
+if (track) {
+  const origItems = Array.from(track.children);
+  // Klonuj 2× żeby pętla była wystarczająco długa
+  origItems.forEach(el => track.appendChild(el.cloneNode(true)));
+  origItems.forEach(el => track.appendChild(el.cloneNode(true)));
 
-if (track && marquee) {
-  // 1. Sklonuj zawartość, aby zapewnić ciągłość
-  const items = Array.from(track.children);
-  
-  // Klonujemy elementy dwa razy, aby mieć pewność, że nie braknie obrazu
-  items.forEach(item => {
-    const clone1 = item.cloneNode(true);
-    const clone2 = item.cloneNode(true);
-    track.appendChild(clone1);
-    track.appendChild(clone2);
-  });
+  let x = 0;
+  const GAP = 32; // gap: 2rem w CSS
 
-  // 2. Logika płynnego przesuwania
-  let scrollPos = 0;
-  const speed = 0.4; // Zmień tę liczbę, aby przyspieszyć/spowolnić (np. 0.5 lub 2)
+  function marqueeStep() {
+    x -= 0.5;
+    // Łączna szerokość jednej oryginalnej grupy elementów
+    const groupW = origItems.reduce((sum, el) => sum + el.offsetWidth + GAP, 0);
+    if (x <= -groupW) x = 0;
+    track.style.transform = `translateX(${x}px)`;
+    requestAnimationFrame(marqueeStep);
+  }
+  marqueeStep();
+}
 
-  function animate() {
-    scrollPos -= speed;
-    
-    // Jeśli przesunęliśmy się o szerokość jednej pełnej grupy (oryginału), 
-    // resetujemy pozycję do 0 (niezauważalnie dla oka)
-    // Wewnątrz funkcji animate w main.js:
-    const gap = 32; // 2rem = 32px
-    const firstGroupWidth = items.length * (items[0].offsetWidth + gap);
-    
-    if (Math.abs(scrollPos) >= firstGroupWidth) {
-      scrollPos = 0;
+// ── Slider opinii ─────────────────────────────────────────────────────────
+const slider   = document.getElementById('testimonials-slider');
+const dotsWrap = document.getElementById('testimonials-dots');
+const btnPrev  = document.getElementById('prev-testi');
+const btnNext  = document.getElementById('next-testi');
+const cards    = Array.from(document.querySelectorAll('.testimonial'));
+
+if (slider && dotsWrap && cards.length) {
+  let cur = 0;
+  const GAP_TESTI = 32; // gap: 2rem w CSS
+  const perView   = () => window.innerWidth >= 768 ? 2 : 1;
+  const maxIdx    = () => cards.length - perView();
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    for (let i = 0; i <= maxIdx(); i++) {
+      const btn = document.createElement('button');
+      btn.className = 'dot' + (i === cur ? ' dot--active' : '');
+      btn.addEventListener('click', () => go(i));
+      dotsWrap.appendChild(btn);
     }
-    
-    track.style.transform = `translateX(${scrollPos}px)`;
-    requestAnimationFrame(animate);
   }
 
-  // Uruchom animację
-  animate();
-}
-// Obsługa slidera opinii
-const testiSlider = document.getElementById('testimonials-slider');
-const dotsContainer = document.getElementById('testimonials-dots');
-const btnPrev = document.getElementById('prev-testi');
-const btnNext = document.getElementById('next-testi');
-const testimonials = document.querySelectorAll('.testimonial');
+  function go(idx) {
+    const total = maxIdx() + 1;
+    cur = ((idx % total) + total) % total; // zapętlenie w obie strony
+    const cardW = cards[0].offsetWidth + GAP_TESTI;
+    slider.style.transform = `translateX(-${cur * cardW}px)`;
+    dotsWrap.querySelectorAll('.dot').forEach((d, i) =>
+      d.classList.toggle('dot--active', i === cur)
+    );
+  }
 
-if (testiSlider && dotsContainer) {
-  // 1. Generuj kropki na podstawie liczby opinii
-  testimonials.forEach((_, idx) => {
-    const dot = document.createElement('button');
-    dot.classList.add('dot');
-    if (idx === 0) dot.classList.add('dot--active');
-    dot.addEventListener('click', () => {
-      testiSlider.scrollTo({
-        left: testimonials[idx].offsetLeft - testiSlider.offsetLeft,
-        behavior: 'smooth'
-      });
-    });
-    dotsContainer.appendChild(dot);
-  });
+  btnPrev?.addEventListener('click', () => go(cur - 1));
+  btnNext?.addEventListener('click', () => go(cur + 1));
+  window.addEventListener('resize', () => { buildDots(); go(cur); });
 
-  const dots = document.querySelectorAll('.dot');
-
-  // 2. Aktualizuj aktywną kropkę podczas scrollowania
-  testiSlider.addEventListener('scroll', () => {
-    const scrollLeft = testiSlider.scrollLeft;
-    const width = testiSlider.offsetWidth;
-    
-    // Obliczamy indeks (zaokrąglamy, żeby kropka "skoczyła" w połowie drogi)
-    const activeIndex = Math.round(scrollLeft / width);
-    
-    dots.forEach((dot, idx) => {
-      dot.classList.toggle('dot--active', idx === activeIndex);
-    });
-  });
-
-  // 3. Obsługa strzałek (zostaje podobna, ale lepiej użyć offsetu)
-  btnNext.addEventListener('click', () => {
-    testiSlider.scrollBy({ left: testiSlider.offsetWidth, behavior: 'smooth' });
-  });
-
-  btnPrev.addEventListener('click', () => {
-    testiSlider.scrollBy({ left: -testiSlider.offsetWidth, behavior: 'smooth' });
-  });
+  buildDots();
+  go(0);
 }
