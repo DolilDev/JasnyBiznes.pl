@@ -168,3 +168,29 @@ if (slider && dotsWrap && cards.length) {
   buildDots();
   go(0);
 }
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      
+      // Lista ID sekcji, które mają NIC nie podświetlać (np. opinie nie mają ID w Twoim HTML, ale cała sekcja jest między portfolio a kontaktem)
+      // Jeśli Twoja sekcja z opiniami ma np. klasę lub ID, którego nie ma w menu, to poniższy kod zadziała
+      
+      navLinks.forEach((link) => {
+        link.classList.remove('active');
+        
+        // Podświetlaj tylko jeśli ID sekcji zgadza się z href linku
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active');
+        }
+      });
+
+      // DODATKOWY WARUNEK: Jeśli sekcja nie ma ID (jak Twoja sekcja opinii w index.html), 
+      // lub jeśli chcesz ją pominąć ręcznie:
+      if (!id || id === 'opinie') { 
+        navLinks.forEach(link => link.classList.remove('active'));
+      }
+    }
+  });
+}, observerOptions);
