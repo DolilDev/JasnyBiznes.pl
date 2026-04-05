@@ -72,7 +72,63 @@ if (track) {
   marqueeStep();
 }
 
-// ── Slider opinii ─────────────────────────────────────────────────────────
+// ── Slider zespołu (tylko mobile, autoplay 12s, reset timera po interakcji) ──
+const teamSlider = document.getElementById('team-slider');
+const teamDots   = document.getElementById('team-dots');
+const teamCards  = teamSlider ? Array.from(teamSlider.children) : [];
+
+if (teamSlider && teamDots && teamCards.length > 1) {
+  let teamCur = 0;
+  let autoTimer = null;
+
+  // Tylko na mobile
+  const isMobile = () => window.innerWidth < 768;
+
+  // Ustaw szerokość każdej karty na 100% wrappera — tylko na mobile
+  function sizeCards() {
+    if (isMobile()) {
+      const w = teamSlider.parentElement.offsetWidth;
+      teamCards.forEach(c => c.style.minWidth = w + 'px');
+    } else {
+      teamCards.forEach(c => c.style.minWidth = '');
+    }
+  }
+
+  function teamBuildDots() {
+    teamDots.innerHTML = '';
+    if (!isMobile()) return;
+    teamCards.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === teamCur ? ' dot--active' : '');
+      d.addEventListener('click', () => teamGo(i, true));
+      teamDots.appendChild(d);
+    });
+  }
+
+  function teamGo(idx, userAction = false) {
+    teamCur = ((idx % teamCards.length) + teamCards.length) % teamCards.length;
+    const cardW = teamCards[0].offsetWidth + 32; // gap 2rem
+    teamSlider.style.transform = isMobile()
+      ? `translateX(-${teamCur * cardW}px)`
+      : '';
+    teamDots.querySelectorAll('.dot').forEach((d, i) =>
+      d.classList.toggle('dot--active', i === teamCur)
+    );
+    // Reset timera — nieważne czy user kliknął czy autoplay
+    if (autoTimer) clearTimeout(autoTimer);
+    autoTimer = setTimeout(() => teamGo(teamCur + 1), 12000);
+  }
+
+  sizeCards();
+  teamBuildDots();
+  teamGo(0);
+
+  window.addEventListener('resize', () => {
+    sizeCards();
+    teamBuildDots();
+    teamGo(teamCur);
+  });
+}
 const slider   = document.getElementById('testimonials-slider');
 const dotsWrap = document.getElementById('testimonials-dots');
 const btnPrev  = document.getElementById('prev-testi');

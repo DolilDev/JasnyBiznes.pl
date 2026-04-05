@@ -538,7 +538,44 @@ a   { text-decoration: none; color: inherit; }
   align-items: center;
   gap: 3rem;
 }
-@media (min-width: 768px) { .team { flex-direction: row; justify-content: center; } }
+
+/* Slider — tylko mobile */
+.team__slider-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+.team__slider {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.4s ease;
+}
+
+/* Kropki — tylko mobile */
+.team__dots {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .team {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .team__slider-wrap {
+    overflow: visible;
+    width: auto;
+  }
+  .team__slider {
+    transform: none !important;
+    flex-direction: row;
+    justify-content: center;
+    gap: 6rem;
+  }
+  .team__dots {
+    display: none;
+  }
+}
 
 .team__title-accent {
   font-family: var(--font-accent);
