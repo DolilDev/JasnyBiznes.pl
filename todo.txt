@@ -1,1 +1,5 @@
 loda
+
+strzalka do gory
+
+nad stzalka nasze profilowe wybierane losow ktore pojawia sie na stronie po wbiciu po okolo 15 sekundach i zasugeruje pomoc oraz przkieruje do formularza jezeli ktos bedzie chcial tej pomocy

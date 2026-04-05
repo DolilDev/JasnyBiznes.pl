@@ -135,11 +135,14 @@ a   { text-decoration: none; color: inherit; }
 .btn--primary:hover { background-color: var(--color-primary-container); }
 
 .btn--outline {
-  background-color: var(--color-surface-container-lowest);
+  background-color: transparent; /* Teraz będzie przezroczysty */
   color: var(--color-primary);
-  border: none;
+  border: 1.5px solid var(--color-primary); /* Dodajemy obramowanie */
 }
-.btn--outline:hover { background-color: var(--color-surface-container-low); }
+.btn--outline:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
 
 .btn--lg { padding: 1rem 2rem; font-size: 1.125rem; font-weight: 700; }
 .btn--full { width: 100%; }
