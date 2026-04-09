@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Trafni.pl | Agencja Marketingowa</title>
+  <title>JasnyBiznes.pl | Agencja Marketingowa</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600&family=Caveat:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
 </head>
@@ -12,14 +12,15 @@
 <!-- TopNavBar -->
 <nav class="navbar">
   <div class="navbar__inner">
-    <a href="#onas" class="navbar__logo">Trafni.pl</a>
-    <div class="navbar__links">
+    <a href="https://jasnybiznes.pl/" class="navbar__logo">JasnyBiznes.pl</a>
+    <div class="navbar__links" id="navbar-links">
       <a class="navbar__link" href="#onas">O nas</a>
       <a class="navbar__link" href="#oferta">Oferta</a>
       <a class="navbar__link" href="#proces">Proces</a>
       <a class="navbar__link" href="#portfolio">Portfolio</a>
       <a class="navbar__link" href="#zespol">Zespół</a>
       <a class="btn btn--outline" href="#kontakt">Kontakt</a>
+      <span class="navbar__indicator" id="navbar-indicator"></span>
     </div>
     <button class="navbar__hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -137,9 +138,8 @@
 
   <div class="portfolio-marquee" id="portfolio-marquee">
     <div class="portfolio-track" id="portfolio-track">
-      <div class="portfolio-item"><img src="img/arboserwisbeskidy.pl_portfolio.png" alt="Zdjęcie strony ArboSerwis.pl Wykonanej przez naszą ekipe"></div>
-      <div class="portfolio-item"><img src="img/Trafni.pl_portfolio.webp" alt="Zdjęcie strony  Wykonanej przez naszą ekipe"></div>
-      <div class="portfolio-item"><img src="img/arboserwisbeskidy.pl_portfolio.webp" alt="Zdjęcie strony  Wykonanej przez naszą ekipe"></div>
+      <div class="portfolio-item"><img src="img/JasnyBiznes.pl_portfolio.webp" alt="Strona JasnyBiznes.pl wykonana przez JasnyBiznes.pl"></div>
+      <div class="portfolio-item"><img src="img/ArboSerwisBeskidy.pl_portfolio.webp" alt="Strona ArboSerwisBeskidy.pl wykonana przez JasnyBiznes.pl"></div>
     </div>
   </div>
 </section>
@@ -174,7 +174,7 @@
             <ul class="team-member__facts">
               <li>— Koduje szybciej niż myśli</li>
               <li>— Pije za dużo espresso</li>
-              <li>— Robi loda najlepiej na świecie</li>
+              <li>— Tłumaczy język maszynowy na ludzki</li>
             </ul>
           </div>
         </div>
@@ -198,58 +198,13 @@
             <span class="material-symbols-outlined star">star</span>
           </div>
           <blockquote class="testimonial__quote">
-            "Współpraca przerosła nasze oczekiwania. Nasza nowa strona nie tylko wygląda świetnie, ale realnie zwiększyła liczbę zapytań o 40%."
+            "Treść opini"
           </blockquote>
-          <div class="testimonial__author">Anna Kowalska</div>
-          <div class="testimonial__company">CEO, TechFlow Solutions</div>
+          <div class="testimonial__author">Imie Nazwisko</div>
+          <div class="testimonial__company">Stanowisko, Nazwa Firmy</div>
         </div>
         
-        <div class="testimonial">
-          <div class="testimonial__stars">
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-          </div>
-          <blockquote class="testimonial__quote">
-            "Eksperci w każdym calu. Kampania SEO, którą przeprowadzili, pozwoliła nam wyprzedzić konkurencję w rekordowo krótkim czasie."
-          </blockquote>
-          <div class="testimonial__author">Marek Nowak</div>
-          <div class="testimonial__company">Manager, Green Garden Co.</div>
-        </div>
-
-        <div class="testimonial">
-          <div class="testimonial__stars">
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-          </div>
-          <blockquote class="testimonial__quote">
-            "Zajebiście jest. Profesjonalne podejście i świetny kontakt."
-          </blockquote>
-          <div class="testimonial__author">Piotr Wiśniewski</div>
-          <div class="testimonial__company">Właściciel, Creative Studio</div>
-        </div>
-
-        <div class="testimonial">
-          <div class="testimonial__stars">
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-            <span class="material-symbols-outlined star">star</span>
-          </div>
-          <blockquote class="testimonial__quote">
-            "Dobrze lodzą... tzn. robią lody marketingowe! Najlepsza agencja w mieście."
-          </blockquote>
-          <div class="testimonial__author">Janusz Biznesu</div>
-          <div class="testimonial__company">Prezes, IceCream Corp</div>
-        </div>
-      </div>
-
+<!-- 
       <div class="testimonials__nav">
         <button class="btn btn--outline btn--nav" id="prev-testi">
           <span class="material-symbols-outlined">arrow_back</span>
@@ -259,6 +214,7 @@
           <span class="material-symbols-outlined">arrow_forward</span>
         </button>
       </div>
+-->
   </div>
 </section>
 
@@ -274,11 +230,7 @@
         <div class="contact-info__items">
           <div class="contact-info__item">
             <div class="contact-info__icon"><span class="material-symbols-outlined">mail</span></div>
-            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="117a7e7f65707a6551656370777f783f617d">[email&#160;protected]</a></span>
-          </div>
-          <div class="contact-info__item">
-            <div class="contact-info__icon"><span class="material-symbols-outlined">call</span></div>
-            <span>+48 123 456 789</span>
+            <span><a href="mailto:kontakt@jasnybiznes.pl" class="__cf_email__" data-cfemail="117a7e7f65707a6551656370777f783f617d">kontakt@jasnybiznes.pl</a></span>
           </div>
         </div>
       </div>
@@ -301,6 +253,7 @@
             <option>Strona internetowa</option>
             <option>Social Media</option>
             <option>Kompleksowa obsługa</option>
+            <option>Inne...</option>
           </select>
         </div>
         <div class="contact-form__field">
@@ -318,7 +271,7 @@
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <div class="footer__logo">Trafni.pl</div>
+        <div class="footer__logo">JasnyBiznes.pl</div>
         <p class="footer__tagline">Design with 💙</p>
       </div>
       <div class="footer__col footer__col--firma">
@@ -340,34 +293,17 @@
       <div class="footer__col">
         <h5 class="footer__col-title">Informacje</h5>
         <ul class="footer__links">
-          <li><a class="footer__link" href="#">Polityka Prywatności</a></li>
-          <li><a class="footer__link" href="#">Regulamin</a></li>
-          <li><a class="footer__link" href="#">Cookies</a></li>
+          <li><a class="footer__link" href="informacje.html#polityka-prywatnosci">Polityka Prywatności</a></li>
+          <li><a class="footer__link" href="informacje.html#regulamin">Regulamin</a></li>
+          <li><a class="footer__link" href="informacje.html#cookies">Cookies</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      © 2026 Trafni.pl Wszelkie prawa zastrzeżone.
+      © 2026 JasnyBiznes.pl Wszelkie prawa zastrzeżone.
     </div>
   </div>
 </footer>
-
-<!-- Robot pomocnik -->
-<div class="robot-widget" id="robot-widget" aria-hidden="true">
-  <div class="robot-bubble" id="robot-bubble">
-    <p class="robot-bubble__text">Hej! 👋 Masz pytanie?<br/>Chętnie pomożemy!</p>
-    <a class="robot-bubble__btn" id="robot-cta">Napisz do nas →</a>
-  </div>
-  <video
-    class="robot-widget__video"
-    id="robot-video"
-    src="robot.webm"
-    autoplay
-    loop
-    muted
-    playsinline
-  ></video>
-</div>
 
 <script src="main.js"></script>
 </body>

@@ -219,22 +219,27 @@ a   { text-decoration: none; color: inherit; }
   font-weight: 700;
 }
 
-/* Płynne podkreślenie dla desktopu */
+/* Płynny wskaźnik (slider) dla desktopu */
 @media (min-width: 768px) {
-  .navbar__link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0; /* Startujemy od zera */
-    height: 2px;
-    background-color: var(--color-primary);
-    transition: width 0.3s ease; /* Płynne rozwijanie kreski */
-    border-radius: 2px;
+  .navbar__links {
+    position: relative;
   }
 
-  .navbar__link.active::after {
-    width: 100%; /* Rozwijamy do pełnej szerokości */
+  .navbar__indicator {
+    position: absolute;
+    bottom: -6px;
+    height: 2.5px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.2s ease;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .navbar__indicator--visible {
+    opacity: 1;
   }
 }
 

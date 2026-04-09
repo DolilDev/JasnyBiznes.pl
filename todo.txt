@@ -9,3 +9,7 @@ formularz
 jeden to `team@domena.pl` drugi to `kontakt@domena.pl`
 
 poprawienie navbara zeby podswietla nazwe skecji w ktorej sie znajduje
+
+zrobic cookies
+-info o cookies ktore dziala
+-sledzenie ruchu

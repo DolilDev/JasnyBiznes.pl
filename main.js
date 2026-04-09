@@ -290,40 +290,58 @@ if (slider && dotsWrap && cards.length) {
 }
 
 // ── Aktywny link w navbarze przy przewijaniu ──────────────────────────────
-// Zbierz wszystkie linki navbar (desktop + mobile)
-const navLinks = document.querySelectorAll('.navbar__link, .navbar__mobile-link');
+const navLinks     = document.querySelectorAll('.navbar__link, .navbar__mobile-link');
+const indicator    = document.getElementById('navbar-indicator');
+const navLinksWrap = document.getElementById('navbar-links');
 
-// Zbierz ID sekcji, które faktycznie mają link w navbarze
 const navIds = new Set(
   Array.from(navLinks).map(l => l.getAttribute('href').replace('#', ''))
 );
 
-// Obserwuj wszystkie sekcje z ID
+// Przesuń wskaźnik pod wskazany link desktopowy
+function moveIndicator(link) {
+  if (!indicator || !navLinksWrap || !link) return;
+  if (window.innerWidth < 768) return;
+  const wrapRect = navLinksWrap.getBoundingClientRect();
+  const linkRect = link.getBoundingClientRect();
+  indicator.style.left  = (linkRect.left - wrapRect.left) + 'px';
+  indicator.style.width = linkRect.width + 'px';
+  indicator.classList.add('navbar__indicator--visible');
+}
+
+// Ustaw aktywny link i przesuń wskaźnik
+function setActiveLink(id) {
+  navLinks.forEach(l => l.classList.remove('active'));
+  let targetDesktop = null;
+  navLinks.forEach(l => {
+    if (l.getAttribute('href') === `#${id}`) {
+      l.classList.add('active');
+      if (l.classList.contains('navbar__link')) targetDesktop = l;
+    }
+  });
+  moveIndicator(targetDesktop);
+}
+
+// Przelicz wskaźnik po resize
+window.addEventListener('resize', () => {
+  const activeLink = document.querySelector('.navbar__link.active');
+  moveIndicator(activeLink);
+});
+
 const sections = document.querySelectorAll('section[id], header[id]');
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
-
     const id = entry.target.id;
-
-    // Zawsze zdejmuj aktywność ze wszystkich linków
-    navLinks.forEach(l => l.classList.remove('active'));
-
-    // Podświetl tylko jeśli ta sekcja ma swój link w navbarze
     if (navIds.has(id)) {
-      navLinks.forEach(l => {
-        if (l.getAttribute('href') === `#${id}`) {
-          l.classList.add('active');
-        }
-      });
+      setActiveLink(id);
+    } else {
+      navLinks.forEach(l => l.classList.remove('active'));
+      if (indicator) indicator.classList.remove('navbar__indicator--visible');
     }
-    // Jeśli sekcji nie ma w navbarze (np. #opinie) — nic nie podświetlamy
   });
-}, {
-  // Sekcje fullscreen: uznaj za aktywną gdy zajmuje ≥50% viewportu
-  threshold: 0.5,
-});
+}, { threshold: 0.5 });
 
 sections.forEach(s => observer.observe(s));
 // ── Robot pomocnik ────────────────────────────────────────────

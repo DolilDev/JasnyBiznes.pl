@@ -5,9 +5,9 @@
    KONFIGURACJA — zmień poniższe wartości na swoje:
 */
 
-define('MAIL_OWNER',   'twoj@email.pl');         // <-- Twój e-mail (dostajesz dane z formularza)
-define('MAIL_FROM',    'kontakt@trafni.pl');      // <-- Adres nadawcy (musi być na Twoim serwerze)
-define('SITE_NAME',    'Trafni.pl');
+define('MAIL_OWNER',   'biuro@jasnybiznes.pl');         // <-- Twój e-mail (dostajesz dane z formularza)
+define('MAIL_FROM',    'kontakt@jasnybiznes.pl');      // <-- Adres nadawcy (musi być na Twoim serwerze)
+define('SITE_NAME',    'jasnybiznes.pl');
 
 /* ============================================================ */
 
