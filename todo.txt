@@ -1,5 +1,11 @@
-loda
-
 w prawym dolnym nasze animowane profilowe wybierane losow ktore pojawia sie na stronie po wbiciu po okolo 15 sekundach i zasugeruje pomoc oraz przkieruje do formularza jezeli ktos bedzie chcial tej pomocy
 
-formularz i uzgodnienie gdzie maja leciec
+formularz
+-po wyslaniu przycisk potwierdzenia wyslania wywala sei na caly ekran i daje info o pomyslnie wyslanej wiadomosci
+-na emaila urzytkownika przychodzi email z potwierdzeniem ze wiadomosc zostala wyslana i info ze wkrotce sie skontaktujemy
+-wiadomosc od uzytkownika przychodzi na naszego emaila
+
+2 emaile
+jeden to `team@domena.pl` drugi to `kontakt@domena.pl`
+
+poprawienie navbara zeby podswietla nazwe skecji w ktorej sie znajduje

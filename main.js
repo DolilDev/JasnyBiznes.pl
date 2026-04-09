@@ -29,22 +29,142 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Formularz kontaktowy: prosty feedback po wysłaniu
-const form = document.querySelector('.contact-form');
+// ── Formularz kontaktowy: walidacja + wysyłka AJAX do contact.php ─────────────
+const form = document.getElementById('contact-form');
+
 if (form) {
-  form.addEventListener('submit', (e) => {
+
+  // --- Reguły walidacji ---
+  function validateName(val) {
+    return /^[\p{L}]{3,}\s[\p{L}]{3,}$/u.test(val.trim())
+      ? null
+      : 'Podaj imię i nazwisko (min. 3 litery, spacja, min. 3 litery).';
+  }
+  function validateEmail(val) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim())
+      ? null
+      : 'Podaj poprawny adres e-mail (np. jan@firma.pl).';
+  }
+  function validatePhone(val) {
+    const digits = val.replace(/[\s\-\+]/g, '').replace(/^48/, '');
+    return /^\d{9}$/.test(digits)
+      ? null
+      : 'Numer telefonu musi mieć dokładnie 9 cyfr.';
+  }
+  function validateMessage(val) {
+    return val.trim().length >= 30
+      ? null
+      : `Wiadomość jest za krótka (${val.trim().length}/30 znaków).`;
+  }
+
+  const rules = {
+    'field-name':    validateName,
+    'field-email':   validateEmail,
+    'field-phone':   validatePhone,
+    'field-message': validateMessage,
+  };
+
+  function showError(fieldId, msg) {
+    const field = document.getElementById(fieldId);
+    const errId = 'error-' + fieldId.replace('field-', '');
+    const err   = document.getElementById(errId);
+    if (!field || !err) return;
+    if (msg) {
+      err.textContent = msg;
+      field.classList.add('contact-form__input--error');
+    } else {
+      err.textContent = '';
+      field.classList.remove('contact-form__input--error');
+    }
+  }
+
+  Object.keys(rules).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('blur', () => showError(id, rules[id](el.value)));
+    el.addEventListener('input', () => {
+      if (el.classList.contains('contact-form__input--error')) {
+        showError(id, rules[id](el.value));
+      }
+    });
+  });
+
+  function animateSuccess() {
+    const btn     = document.getElementById('submit-btn');
+    const section = document.getElementById('kontakt');
+    if (!btn || !section) return;
+
+    const btnRect  = btn.getBoundingClientRect();
+    const secRect  = section.getBoundingClientRect();
+
+    const scaleX = secRect.width  / btnRect.width;
+    const scaleY = secRect.height / btnRect.height;
+    const scale  = Math.max(scaleX, scaleY) * 1.05;
+
+    const btnCenterX = btnRect.left + btnRect.width  / 2;
+    const btnCenterY = btnRect.top  + btnRect.height / 2;
+    const secCenterX = secRect.left + secRect.width  / 2;
+    const secCenterY = secRect.top  + secRect.height / 2;
+    const dx = secCenterX - btnCenterX;
+    const dy = secCenterY - btnCenterY;
+
+    btn.style.transition = 'transform 0.7s cubic-bezier(0.4,0,0.2,1), border-radius 0.7s ease';
+    btn.style.transformOrigin = '50% 50%';
+    btn.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+    btn.style.borderRadius = '0';
+    btn.style.zIndex = '100';
+    btn.style.position = 'relative';
+
+    setTimeout(() => {
+      btn.innerHTML = `
+        <span style="font-size:clamp(1.5rem,4vw,3rem);font-weight:900;letter-spacing:-0.03em;display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+          <span style="font-size:1.2em">✓</span>
+          Wiadomość wysłana!
+          <span style="font-size:0.45em;font-weight:400;opacity:0.85;">Skontaktujemy się wkrótce 🚀</span>
+        </span>`;
+    }, 350);
+  }
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = form.querySelector('button[type="submit"], .btn');
-    if (btn) {
-      btn.textContent = 'Wysłano! ✓';
-      btn.disabled = true;
-      btn.style.backgroundColor = '#16a34a';
-      setTimeout(() => {
-        btn.textContent = 'Wyślij wiadomość';
+
+    let hasErrors = false;
+    Object.keys(rules).forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const msg = rules[id](el.value);
+      showError(id, msg);
+      if (msg) hasErrors = true;
+    });
+    if (hasErrors) return;
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Wysyłanie…';
+
+    try {
+      const res  = await fetch('contact.php', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        animateSuccess();
+      } else {
+        if (data.errors) {
+          Object.entries(data.errors).forEach(([key, msg]) => {
+            showError('field-' + key, msg);
+          });
+        }
         btn.disabled = false;
-        btn.style.backgroundColor = '';
-        form.reset();
-      }, 3000);
+        btn.textContent = 'Wyślij wiadomość';
+        if (data.error && !data.errors) alert(data.error);
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Wyślij wiadomość';
+      alert('Problem z połączeniem. Sprawdź internet i spróbuj ponownie.');
     }
   });
 }
@@ -169,28 +289,76 @@ if (slider && dotsWrap && cards.length) {
   go(0);
 }
 
+// ── Aktywny link w navbarze przy przewijaniu ──────────────────────────────
+// Zbierz wszystkie linki navbar (desktop + mobile)
+const navLinks = document.querySelectorAll('.navbar__link, .navbar__mobile-link');
+
+// Zbierz ID sekcji, które faktycznie mają link w navbarze
+const navIds = new Set(
+  Array.from(navLinks).map(l => l.getAttribute('href').replace('#', ''))
+);
+
+// Obserwuj wszystkie sekcje z ID
+const sections = document.querySelectorAll('section[id], header[id]');
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const id = entry.target.getAttribute('id');
-      
-      // Lista ID sekcji, które mają NIC nie podświetlać (np. opinie nie mają ID w Twoim HTML, ale cała sekcja jest między portfolio a kontaktem)
-      // Jeśli Twoja sekcja z opiniami ma np. klasę lub ID, którego nie ma w menu, to poniższy kod zadziała
-      
-      navLinks.forEach((link) => {
-        link.classList.remove('active');
-        
-        // Podświetlaj tylko jeśli ID sekcji zgadza się z href linku
-        if (link.getAttribute('href') === `#${id}`) {
-          link.classList.add('active');
+    if (!entry.isIntersecting) return;
+
+    const id = entry.target.id;
+
+    // Zawsze zdejmuj aktywność ze wszystkich linków
+    navLinks.forEach(l => l.classList.remove('active'));
+
+    // Podświetl tylko jeśli ta sekcja ma swój link w navbarze
+    if (navIds.has(id)) {
+      navLinks.forEach(l => {
+        if (l.getAttribute('href') === `#${id}`) {
+          l.classList.add('active');
         }
       });
-
-      // DODATKOWY WARUNEK: Jeśli sekcja nie ma ID (jak Twoja sekcja opinii w index.html), 
-      // lub jeśli chcesz ją pominąć ręcznie:
-      if (!id || id === 'opinie') { 
-        navLinks.forEach(link => link.classList.remove('active'));
-      }
     }
+    // Jeśli sekcji nie ma w navbarze (np. #opinie) — nic nie podświetlamy
   });
-}, observerOptions);
+}, {
+  // Sekcje fullscreen: uznaj za aktywną gdy zajmuje ≥50% viewportu
+  threshold: 0.5,
+});
+
+sections.forEach(s => observer.observe(s));
+// ── Robot pomocnik ────────────────────────────────────────────
+const robotWidget = document.getElementById('robot-widget');
+const robotBubble = document.getElementById('robot-bubble');
+const robotCta    = document.getElementById('robot-cta');
+const kontaktSection = document.getElementById('kontakt');
+
+if (robotWidget && kontaktSection) {
+  // Pojawia się po 3 sekundach od wejścia na stronę
+  setTimeout(() => {
+    robotWidget.classList.add('robot-widget--visible');
+
+    // Dymek pojawia się 2 sekundy po robocie
+    setTimeout(() => {
+      robotBubble.classList.add('robot-bubble--visible');
+    }, 2000);
+  }, 3000);
+
+  // Kliknięcie CTA — płynne przewinięcie do formularza
+  robotCta?.addEventListener('click', (e) => {
+    e.preventDefault();
+    kontaktSection.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Ukryj robota gdy użytkownik jest w sekcji kontakt
+  const robotObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        robotWidget.classList.add('robot-widget--hidden');
+      } else {
+        robotWidget.classList.remove('robot-widget--hidden');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  robotObserver.observe(kontaktSection);
+}

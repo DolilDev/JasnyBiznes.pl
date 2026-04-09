@@ -137,10 +137,9 @@
 
   <div class="portfolio-marquee" id="portfolio-marquee">
     <div class="portfolio-track" id="portfolio-track">
-      <div class="portfolio-item"><img src="1.png" alt="1"></div>
-      <div class="portfolio-item"><img src="1.png" alt="2"></div>
-      <div class="portfolio-item"><img src="1.png" alt="3"></div>
-      <div class="portfolio-item"><img src="1.png" alt="4"></div>
+      <div class="portfolio-item"><img src="img/arboserwisbeskidy.pl_portfolio.png" alt="Zdjęcie strony ArboSerwis.pl Wykonanej przez naszą ekipe"></div>
+      <div class="portfolio-item"><img src="img/Trafni.pl_portfolio.webp" alt="Zdjęcie strony  Wykonanej przez naszą ekipe"></div>
+      <div class="portfolio-item"><img src="img/arboserwisbeskidy.pl_portfolio.webp" alt="Zdjęcie strony  Wykonanej przez naszą ekipe"></div>
     </div>
   </div>
 </section>
@@ -156,7 +155,7 @@
         <div class="team__slider" id="team-slider">
           <div class="team-member">
             <div class="team-member__avatar-wrap">
-              <img class="team-member__avatar" alt="Creative Director portrait" src="img/memojiTymon.png"/>
+              <img class="team-member__avatar" alt="Creative Director portrait" src="img/memojiTymon.webp"/>
             </div>
             <h3 class="team-member__name">Tymon Kryszyłowicz</h3>
             <p class="team-member__role">Creative Director &amp; Founder</p>
@@ -168,7 +167,7 @@
           </div>
           <div class="team-member">
             <div class="team-member__avatar-wrap">
-              <img class="team-member__avatar" alt="Lead Developer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwiKpYqX_ZZtyLlrttpCOaVN-YSfFjuh1pN389LQo7ZY3_tyx8XkMoiuPETu49GkHIlIXPsXH-VPk7D8in09U-d-eesfonr3iPBB0r7tltYxJzoCdxRrAFOz-2W2Ax85xH1x-qwujOkwB-EP6TjlEeG8xXhX16BgC4bDPbvOOBDiawL061kphEyVlxA64MBhfP0LKm398TBa3w7xo2IZcw_1vsjdiJZ9t3hFb6l6WoF8oKLzivg4RaH-l22YcmwFmCCWlmZklX58_e"/>
+              <img class="team-member__avatar" alt="Lead Developer portrait" src="img/memojiTymon.png"/>
             </div>
             <h3 class="team-member__name">Jakub Kocurkiewicz</h3>
             <p class="team-member__role">Lead Developer</p>
@@ -283,18 +282,32 @@
           </div>
         </div>
       </div>
-      <form class="contact-form">
-        <input class="contact-form__input" placeholder="Imię i Nazwisko" type="text"/>
-        <input class="contact-form__input" placeholder="Email" type="email"/>
-        <input class="contact-form__input" placeholder="Telefon" type="tel"/>
-        <select class="contact-form__input contact-form__select">
-          <option value="">Czego potrzebujesz?</option>
-          <option>Strona internetowa</option>
-          <option>Social Media</option>
-          <option>Kompleksowa obsługa</option>
-        </select>
-        <textarea class="contact-form__input contact-form__textarea" placeholder="Wiadomość" rows="4"></textarea>
-        <button class="btn btn--primary btn--full">Wyślij wiadomość</button>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="contact-form__field">
+          <input class="contact-form__input" id="field-name" name="name" placeholder="Imię i Nazwisko" type="text" autocomplete="name"/>
+          <span class="contact-form__error" id="error-name"></span>
+        </div>
+        <div class="contact-form__field">
+          <input class="contact-form__input" id="field-email" name="email" placeholder="Email" type="email" autocomplete="email"/>
+          <span class="contact-form__error" id="error-email"></span>
+        </div>
+        <div class="contact-form__field">
+          <input class="contact-form__input" id="field-phone" name="phone" placeholder="Telefon" type="tel" autocomplete="tel"/>
+          <span class="contact-form__error" id="error-phone"></span>
+        </div>
+        <div class="contact-form__field">
+          <select class="contact-form__input contact-form__select" name="service">
+          <option value="" disabled hidden selected>Czego potrzebujesz?</option>
+            <option>Strona internetowa</option>
+            <option>Social Media</option>
+            <option>Kompleksowa obsługa</option>
+          </select>
+        </div>
+        <div class="contact-form__field">
+          <textarea class="contact-form__input contact-form__textarea" id="field-message" name="message" placeholder="Wiadomość" rows="4"></textarea>
+          <span class="contact-form__error" id="error-message"></span>
+        </div>
+        <button class="btn btn--primary btn--full" id="submit-btn" type="submit">Wyślij wiadomość</button>
       </form>
     </div>
   </div>
@@ -308,7 +321,7 @@
         <div class="footer__logo">Trafni.pl</div>
         <p class="footer__tagline">Design with 💙</p>
       </div>
-      <div class="footer__col">
+      <div class="footer__col footer__col--firma">
         <h5 class="footer__col-title">Firma</h5>
         <ul class="footer__links">
           <li><a class="footer__link" href="#onas">O nas</a></li>
@@ -338,6 +351,23 @@
     </div>
   </div>
 </footer>
+
+<!-- Robot pomocnik -->
+<div class="robot-widget" id="robot-widget" aria-hidden="true">
+  <div class="robot-bubble" id="robot-bubble">
+    <p class="robot-bubble__text">Hej! 👋 Masz pytanie?<br/>Chętnie pomożemy!</p>
+    <a class="robot-bubble__btn" id="robot-cta">Napisz do nas →</a>
+  </div>
+  <video
+    class="robot-widget__video"
+    id="robot-video"
+    src="robot.webm"
+    autoplay
+    loop
+    muted
+    playsinline
+  ></video>
+</div>
 
 <script src="main.js"></script>
 </body>

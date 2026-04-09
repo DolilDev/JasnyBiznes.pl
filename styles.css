@@ -789,6 +789,19 @@ a   { text-decoration: none; color: inherit; }
 .contact-form__select { color: var(--color-outline); }
 .contact-form__textarea { resize: vertical; min-height: 7rem; }
 
+/* Pola formularza z obsługą błędów */
+.contact-form__field { display: flex; flex-direction: column; gap: 0.25rem; }
+.contact-form__input--error {
+  box-shadow: 0 0 0 2px var(--color-error) !important;
+}
+.contact-form__error {
+  display: none;
+  font-size: 0.8rem;
+  color: var(--color-error);
+  padding-left: 0.25rem;
+  font-weight: 500;
+}
+
 /* ---------- Footer ---------- */
 .footer {
   background-color: #f8fafc;
@@ -810,6 +823,9 @@ a   { text-decoration: none; color: inherit; }
 }
 @media (min-width: 768px) {
   .footer__grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+}
+@media (max-width: 767px) {
+  .footer__col--firma { display: none; }
 }
 
 .footer__logo    { font-size: 1.5rem; font-weight: 900; color: #0f172a; margin-bottom: 1rem; }
@@ -968,3 +984,84 @@ a   { text-decoration: none; color: inherit; }
 
 /* Opcjonalnie: ukrycie nawigacji na bardzo małych ekranach, jeśli chcesz 
    zostawić same kropki, ale przyciski + kropki zazwyczaj wyglądają ok */
+/* ── Robot pomocnik ─────────────────────────────────────────── */
+.robot-widget {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+
+  /* Ukryty na starcie */
+  opacity: 0;
+  transform: translateY(40px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+.robot-widget--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+/* Ukryj na mobile */
+@media (max-width: 767px) {
+  .robot-widget { display: none; }
+}
+
+.robot-widget__video {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18));
+  cursor: pointer;
+}
+
+/* Dymek */
+.robot-bubble {
+  background: #fff;
+  border-radius: 1rem 1rem 0.25rem 1rem;
+  box-shadow: 0 8px 32px rgba(0,89,181,0.15), 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1rem 1.25rem;
+  max-width: 220px;
+  opacity: 0;
+  transform: scale(0.85) translateY(8px);
+  transform-origin: bottom right;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.4,0.64,1);
+}
+.robot-bubble--visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+.robot-bubble__text {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #1e293b;
+}
+.robot-bubble__btn {
+  display: inline-block;
+  background: #0059b5;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.robot-bubble__btn:hover {
+  background: #0047a0;
+}
+
+/* Ukryj widżet gdy użytkownik jest w sekcji kontakt */
+.robot-widget--hidden {
+  opacity: 0 !important;
+  transform: translateY(40px) !important;
+  pointer-events: none !important;
+}
