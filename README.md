@@ -40,5 +40,3 @@ JasnyBiznes/
 
 **Projekt:** [JasnyBiznes.pl](https://jasnybiznes.pl)
 **Technologie:** HTML | CSS | JS | PHP | SEO
-
-```
