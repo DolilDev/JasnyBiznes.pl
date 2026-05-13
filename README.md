@@ -40,3 +40,5 @@ JasnyBiznes/
 
 **Projekt:** [JasnyBiznes.pl](https://jasnybiznes.pl)
 **Technologie:** HTML | CSS | JS | PHP | SEO
+**Autor:** [DolilDev](https://github.com/DolilDev)
+**Autor:** [screampy525](https://github.com/screampy525)
