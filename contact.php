@@ -1,6 +1,6 @@
 <?php
 /* ============================================================
-   contact.php — obsługa formularza kontaktowego Trafni.pl
+   contact.php — obsługa formularza kontaktowego JasnyBiznes.pl
    ============================================================
    KONFIGURACJA — zmień poniższe wartości na swoje:
 */
